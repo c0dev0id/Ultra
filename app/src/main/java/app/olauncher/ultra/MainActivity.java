@@ -233,7 +233,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     private void showKeyboard() {
         search.requestFocus();
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        inputMethodManager.showSoftInput(search, 0);
     }
 
     private void hideKeyboard() {
@@ -319,7 +319,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
-        ResolveInfo result = getPackageManager().resolveActivity(intent, 0);
+        ResolveInfo result = getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
         if (result == null || result.activityInfo == null)
             return "android";
         return result.activityInfo.packageName;
